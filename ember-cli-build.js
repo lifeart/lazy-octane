@@ -1,10 +1,20 @@
 'use strict';
+const path = require('path');
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    babel: {
+      plugins: [ require.resolve('ember-auto-import/babel-plugin') ]
+    },
+    autoImport: {
+      // publicAssetURL: '/assets',
+      // alias: {
+      //   'lazy-components': path.join(__dirname, 'app', 'lazy-components'),
+      // },
+      exclude: ['rsvp'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
